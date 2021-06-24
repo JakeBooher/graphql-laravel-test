@@ -53,28 +53,8 @@ abstract class TestCase extends BaseTestCase
             self::assertSame($expectedHttpStatusCode, $httpStatusCode, $msg);
         }
 
-        $result = $response->getData(true);
-
-        $assertMessage = null;
-
-        if (!$expectErrors && isset($result['errors'])) {
-            $appendErrors = '';
-
-            if (isset($result['errors'][0]['trace'])) {
-                $appendErrors = "\n\n" . $this->formatSafeTrace($result['errors'][0]['trace']);
-            }
-
-            $assertMessage = "Probably unexpected error in GraphQL response:\n"
-                . var_export($result, true)
-                . $appendErrors;
-        }
-        unset($result['errors'][0]['trace']);
-
-        if ($assertMessage) {
-            throw new ExpectationFailedException($assertMessage);
-        }
-
-        return $result;
+        return $response->getData(true);
     }
+
 
 }
