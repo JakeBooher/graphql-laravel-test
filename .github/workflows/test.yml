@@ -7,5 +7,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - run: touch /github/workspace/database/database.sqlite
+      - run: touch database/database.sqlite
       - uses: nathanheffley/laravel-phpunit-action@master
